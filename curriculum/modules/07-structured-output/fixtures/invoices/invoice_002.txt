@@ -1,0 +1,17 @@
+===== BILLING STATEMENT =====
+
+From: TechCorp Solutions
+To: Jane Doe
+Ordered about two dozen items in bulk
+
+Products:
+  Item: Professional Licenses (approx 24 units)
+  Cost: $2,400
+
+Discounted pricing applied (large order)
+Total with discount: $2,280
+Tax: $182.40
+FINAL AMOUNT: $2,462.40
+
+Notes: No specific invoice number assigned
+Delivery: ASAP

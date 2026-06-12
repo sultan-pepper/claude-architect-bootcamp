@@ -1,0 +1,15 @@
+{
+  "scripts": [
+    {
+      "id": "m1-multi-concern",
+      "description": "Multi-concern message: refund status + address update",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "Hi, I need to check on my refund for order O001, and also my address has changed. Can you help me update it? My new address is 999 New Street, Portland, OR 97999.",
+          "expected_outcome": "Agent should handle both concerns: lookup order O001 refund status and address change. Must call get_customer and process_refund (or check if refund was already issued). Should also clarify address change handling (backend does not have an update_address function, but agent should acknowledge the request)."
+        }
+      ]
+    }
+  ]
+}

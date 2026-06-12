@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["file", "line", "category", "severity", "explanation", "fingerprint"],
+    "additionalProperties": true,
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Relative path from repo root, e.g. src/worker-service/process.py"
+      },
+      "line": {
+        "type": "integer",
+        "description": "Line number of the issue (1-indexed)"
+      },
+      "category": {
+        "type": "string",
+        "description": "Issue category matching your prompt's defined categories"
+      },
+      "severity": {
+        "type": "string",
+        "enum": ["critical", "high", "medium", "low"],
+        "description": "Severity of the issue"
+      },
+      "explanation": {
+        "type": "string",
+        "minLength": 1,
+        "description": "One-sentence explanation of the issue"
+      },
+      "fingerprint": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Stable identifier: sha256(file:line:category) first 16 hex chars"
+      }
+    }
+  }
+}

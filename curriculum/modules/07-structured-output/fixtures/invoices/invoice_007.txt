@@ -1,0 +1,17 @@
+Invoice
+
+Bill to: ABC Manufacturing
+
+From: Green Energy Systems
+
+Services:
+Solar Panel Installation at facility (about 50 panels installed)
+Labor: $5,000
+Materials (panels, hardware, wiring): $8,500
+Permits and Testing: $500
+
+Grand Total: $14,000.00
+
+Note: Final invoice number will be assigned upon payment
+Payment method: Purchase order required
+Invoice date: March 16, 2024

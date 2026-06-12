@@ -1,0 +1,18 @@
+BILL TO: Sarah Johnson
+
+FROM: Hardware Solutions LLC
+Invoice Date: 03/22/2024
+No invoice number (will issue next month)
+
+ITEMS:
+Industrial drill press: 1 x $3,000 = $3,000
+Power supply unit: 2 x $500 = $1,000
+Safety equipment bundle: 1 x $800 = $800
+Shipping & Handling: $150
+SUBTOTAL: $4,950
+
+Tax (7%): $346.50
+TOTAL: $5,296.50
+
+Special Notes: Bulk discount eligibility - check next invoice for applied discount
+Method of Payment: Invoice pending approval

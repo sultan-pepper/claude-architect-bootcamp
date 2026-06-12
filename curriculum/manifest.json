@@ -1,0 +1,23 @@
+{
+  "modules": [
+    {"id": "01", "dir": "01-agentic-loop", "name": "agentic-loop",
+     "title": "The agentic loop", "track": "A", "depends_on": []},
+    {"id": "02", "dir": "02-multi-agent", "name": "multi-agent",
+     "title": "Multi-agent orchestration", "track": "A", "depends_on": ["01"]},
+    {"id": "03", "dir": "03-hooks", "name": "hooks",
+     "title": "Hooks and lifecycle", "track": "A", "depends_on": ["01"]},
+    {"id": "04", "dir": "04-claude-code-config", "name": "claude-code-config",
+     "title": "Team-grade Claude Code config", "track": "B", "depends_on": []},
+    {"id": "05", "dir": "05-mcp-server", "name": "mcp-server",
+     "title": "MCP server design", "track": "B", "depends_on": []},
+    {"id": "06", "dir": "06-cicd", "name": "cicd",
+     "title": "CI/CD integration", "track": "B", "depends_on": ["04"]},
+    {"id": "07", "dir": "07-structured-output", "name": "structured-output",
+     "title": "Structured output & extraction", "track": "C", "depends_on": []},
+    {"id": "08", "dir": "08-context-management", "name": "context-management",
+     "title": "Context management", "track": "C", "depends_on": ["03"]},
+    {"id": "09", "dir": "09-capstone-reliability", "name": "capstone-reliability",
+     "title": "Capstone — escalation & reliability", "track": "C",
+     "depends_on": ["02", "03", "05", "07", "08"]}
+  ]
+}

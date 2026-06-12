@@ -1,0 +1,17 @@
+INVOICE
+
+Billed to customer at local office
+
+Vendor: PrintPro Services
+Items ordered:
+  Business cards (5,000 units): $200
+  Letterhead (1,000 sheets): $150
+  Marketing brochures (custom design, roughly 3,000 copies): $450
+  Rush delivery surcharge: $100
+
+Subtotal: $900
+Tax: $72
+Total: $972
+
+Missing: Invoice number, invoice date, customer name, customer address
+Status: DRAFT - pending customer information

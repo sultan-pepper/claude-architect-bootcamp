@@ -1,0 +1,18 @@
+INVOICE
+
+Billed To: Acme Industries
+From: DataFlow Services
+Date: 2024-03-20
+
+Services Rendered:
+  Consulting - 40 hours @ $150/hr = $6,000
+  Implementation - 30 hours @ $200/hr = $6,000
+  Support - 10 hours @ $100/hr = $1,000
+
+Line Items Total: $13,000
+Tax (10%): $1,300
+
+Stated Total: $12,800
+
+Payment Due: 15 days from invoice date
+Invoice#: DF-20240320

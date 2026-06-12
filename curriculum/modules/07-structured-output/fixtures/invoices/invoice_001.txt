@@ -1,0 +1,17 @@
+INVOICE
+Company: Acme Corp
+Customer: John Smith
+Date: March 15, 2024
+Invoice #: INV-2024-001
+
+Items:
+- Widget A, Qty: 5, Price: $10.00 each = $50.00
+- Widget B, Qty: 3, Price: $15.00 each = $45.00
+- Service Fee = $10.00
+
+Subtotal: $105.00
+Tax (8%): $8.40
+Total Due: $113.40
+
+Payment Terms: Net 30
+Contact: billing@acmecorp.com

@@ -1,0 +1,160 @@
+{
+  "scripts": [
+    {
+      "id": "m8-30-turns-3-issues",
+      "description": "30 turns across 3 distinct issues; turn 3 states exact amount $123.45, turn 28 asks for it (recall test)",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "Hi there, I'm having issues with three different orders. First, I want to check the status of order O001.",
+          "expected_outcome": "Agent acknowledges and calls lookup_order('O001') to retrieve status."
+        },
+        {
+          "turn": 2,
+          "user_message": "That order looks good. Now let me ask about order O002 - I think there might be an issue with the total amount.",
+          "expected_outcome": "Agent calls lookup_order('O002') to check details."
+        },
+        {
+          "turn": 3,
+          "user_message": "Yeah, I see the subtotal is $123.45 on that one. But I'm concerned about the charges. What exactly was I charged?",
+          "expected_outcome": "Agent confirms the $123.45 subtotal and explains total with tax and shipping."
+        },
+        {
+          "turn": 4,
+          "user_message": "And I also need to check on another issue with my account - can you verify my email is correct?",
+          "expected_outcome": "Agent calls get_customer to retrieve customer info and confirm email."
+        },
+        {
+          "turn": 5,
+          "user_message": "Email looks fine. But now I'm worried about shipping times. When should order O001 arrive?",
+          "expected_outcome": "Agent references already-fetched O001 delivery_date."
+        },
+        {
+          "turn": 6,
+          "user_message": "That's sooner than expected actually. Let me ask about the third order then - O003.",
+          "expected_outcome": "Agent calls lookup_order('O003')."
+        },
+        {
+          "turn": 7,
+          "user_message": "Hmm, O003 shows free shipping. How did I get free shipping on that?",
+          "expected_outcome": "Agent checks order internal_flags and notes mentioning free shipping policy."
+        },
+        {
+          "turn": 8,
+          "user_message": "Got it. So can you check what my current tier is?",
+          "expected_outcome": "Agent references customer record and states tier."
+        },
+        {
+          "turn": 9,
+          "user_message": "I'm only silver tier. That's frustrating. What are the requirements to get to gold?",
+          "expected_outcome": "Agent acknowledges customer frustration and explains tier system (general knowledge, not in fixture data)."
+        },
+        {
+          "turn": 10,
+          "user_message": "Well, what's the total amount I've spent so far?",
+          "expected_outcome": "Agent references total_spend from customer record."
+        },
+        {
+          "turn": 11,
+          "user_message": "That's not that much. But anyway, can you tell me more about order O002's shipping info?",
+          "expected_outcome": "Agent refers back to O002 data already retrieved."
+        },
+        {
+          "turn": 12,
+          "user_message": "I see the tracking number. Let me ask - what's the difference between being in transit vs delivered?",
+          "expected_outcome": "Agent explains order statuses (general knowledge)."
+        },
+        {
+          "turn": 13,
+          "user_message": "Okay. Now can you tell me how many items I ordered in O001?",
+          "expected_outcome": "Agent counts items from O001 data (2 items)."
+        },
+        {
+          "turn": 14,
+          "user_message": "Two items. What were those exactly?",
+          "expected_outcome": "Agent lists item names and SKUs from O001."
+        },
+        {
+          "turn": 15,
+          "user_message": "Got it. So I want to understand my refund options. If I wanted to return O001, how much would I get back?",
+          "expected_outcome": "Agent explains refund would be based on order total and policy."
+        },
+        {
+          "turn": 16,
+          "user_message": "And what if I return O002 instead?",
+          "expected_outcome": "Agent explains O002 refund amount would be different."
+        },
+        {
+          "turn": 17,
+          "user_message": "What about O003? That one was cheaper right?",
+          "expected_outcome": "Agent compares O003 total to previous orders."
+        },
+        {
+          "turn": 18,
+          "user_message": "Yes that's the book purchase. Do you have my name on file?",
+          "expected_outcome": "Agent retrieves customer name from get_customer call."
+        },
+        {
+          "turn": 19,
+          "user_message": "That's right. And what address do you have for me?",
+          "expected_outcome": "Agent would need to look up shipping_address from one of the orders or acknowledge address lookup limitation."
+        },
+        {
+          "turn": 20,
+          "user_message": "So those are the three addresses from my orders. Have I used different addresses?",
+          "expected_outcome": "Agent reviews shipping addresses from O001, O002, O003."
+        },
+        {
+          "turn": 21,
+          "user_message": "I moved recently so those are all old. But let's talk about something else - when was my account created?",
+          "expected_outcome": "Agent retrieves account_created timestamp from customer record."
+        },
+        {
+          "turn": 22,
+          "user_message": "That's about right. So I've been a customer for a while. Have any of my orders been returned?",
+          "expected_outcome": "Agent would need to review all orders (system limitation - only lookup_order available per ID)."
+        },
+        {
+          "turn": 23,
+          "user_message": "I remember I had to return something. Let me check if you can look up O007 for me.",
+          "expected_outcome": "Agent calls lookup_order('O007') which has status 'RETURNED'."
+        },
+        {
+          "turn": 24,
+          "user_message": "Yes that's the one. It was defective. Did I get my money back?",
+          "expected_outcome": "Agent reviews O007 which shows returned/defective status."
+        },
+        {
+          "turn": 25,
+          "user_message": "So what's the return reason recorded?",
+          "expected_outcome": "Agent cites 'Defective' from O007 return_reason field."
+        },
+        {
+          "turn": 26,
+          "user_message": "Right. Now I want to double-check one of my earlier orders again. Was it O001 or O002?",
+          "expected_outcome": "Agent helps clarify which order (both have been discussed)."
+        },
+        {
+          "turn": 27,
+          "user_message": "O002, yes. I need to know what the subtotal was once more.",
+          "expected_outcome": "Agent recalls $123.45 subtotal from turn 3 statement (context management test)."
+        },
+        {
+          "turn": 28,
+          "user_message": "Wait, can you remind me - what was the exact dollar amount on that order? I need it for my records.",
+          "expected_outcome": "Agent correctly recalls and states $123.45 subtotal from earlier turn 3 (tests memory/context retention across 25 turns)."
+        },
+        {
+          "turn": 29,
+          "user_message": "Perfect, got it written down. One more thing - do you have my phone number on file?",
+          "expected_outcome": "Agent retrieves phone from customer record (if get_customer was called) or states information not available."
+        },
+        {
+          "turn": 30,
+          "user_message": "Great, that's all correct. Thanks for your help organizing all this!",
+          "expected_outcome": "Agent summarizes the conversation and closes politely."
+        }
+      ]
+    }
+  ]
+}

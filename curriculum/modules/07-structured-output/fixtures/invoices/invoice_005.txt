@@ -1,0 +1,23 @@
+==================================================
+                    RECEIPT / INVOICE
+==================================================
+
+Billed To: Michael Chen
+Billing Entity: Premier Consulting Group
+Invoice #: PC-2024-3847
+Date Issued: March 18, 2024
+
+ITEMIZED CHARGES:
+  Initial Consultation (2 hours): $300
+  Strategy Workshop (1 day): $1,000
+  Report Preparation: $400
+
+Subtotal Amount: $1,700.00
+Sales Tax Rate: 9.25%
+Sales Tax Amount: $157.25
+====================================================
+                   TOTAL INVOICE: $1,857.25
+====================================================
+
+Due Date: April 18, 2024
+Contact: invoices@premiergroup.com

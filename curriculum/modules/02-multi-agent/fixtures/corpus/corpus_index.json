@@ -1,0 +1,85 @@
+{
+  "topic": "Containerization and Orchestration",
+  "documents": [
+    {
+      "id": "doc_001",
+      "filename": "doc_001_containers_basics.md",
+      "title": "Container Fundamentals",
+      "subdomain": "Containers"
+    },
+    {
+      "id": "doc_002",
+      "filename": "doc_002_docker_images.md",
+      "title": "Docker Images and Registries",
+      "subdomain": "Containers"
+    },
+    {
+      "id": "doc_003",
+      "filename": "doc_003_kubernetes_basics.md",
+      "title": "Kubernetes Orchestration Basics",
+      "subdomain": "Orchestration"
+    },
+    {
+      "id": "doc_004",
+      "filename": "doc_004_k8s_deployments.md",
+      "title": "Kubernetes Deployments and Scaling",
+      "subdomain": "Orchestration"
+    },
+    {
+      "id": "doc_005",
+      "filename": "doc_005_container_networking.md",
+      "title": "Container Networking",
+      "subdomain": "Networking"
+    },
+    {
+      "id": "doc_006",
+      "filename": "doc_006_k8s_ingress.md",
+      "title": "Kubernetes Ingress",
+      "subdomain": "Networking"
+    },
+    {
+      "id": "doc_007",
+      "filename": "doc_007_container_storage.md",
+      "title": "Container Storage and Persistence",
+      "subdomain": "Storage"
+    },
+    {
+      "id": "doc_008",
+      "filename": "doc_008_container_security.md",
+      "title": "Container Security",
+      "subdomain": "Security"
+    },
+    {
+      "id": "doc_009",
+      "filename": "doc_009_container_monitoring.md",
+      "title": "Container Monitoring and Observability",
+      "subdomain": "Operations"
+    },
+    {
+      "id": "doc_010",
+      "filename": "doc_010_k8s_config_management.md",
+      "title": "Kubernetes Configuration Management",
+      "subdomain": "Operations"
+    },
+    {
+      "id": "doc_011",
+      "filename": "doc_011_k8s_resource_management.md",
+      "title": "Kubernetes Resource Management",
+      "subdomain": "Operations"
+    },
+    {
+      "id": "doc_012",
+      "filename": "doc_012_multi_container_patterns.md",
+      "title": "Multi-Container Pod Patterns",
+      "subdomain": "Orchestration"
+    }
+  ],
+  "subdomains": [
+    "Containers",
+    "Orchestration",
+    "Networking",
+    "Storage",
+    "Security",
+    "Operations"
+  ]
+}

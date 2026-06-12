@@ -1,0 +1,63 @@
+{
+  "bugs": [
+    {
+      "id": 1,
+      "file": "src/worker-service/process.py",
+      "line": 43,
+      "category": "off-by-one",
+      "description": "batch_tasks uses range(0, len(tasks) - 1, batch_size) which skips the last task",
+      "current_code": "for i in range(0, len(tasks) - 1, batch_size):",
+      "correct_code": "for i in range(0, len(tasks), batch_size):"
+    },
+    {
+      "id": 2,
+      "file": "src/worker-service/process.py",
+      "line": 28,
+      "category": "wrong-comparison",
+      "description": "validate_task checks wrong fields ['id', 'name', 'data'] instead of ['id', 'type', 'payload']",
+      "current_code": "required_fields = [\"id\", \"name\", \"data\"]",
+      "correct_code": "required_fields = [\"id\", \"type\", \"payload\"]"
+    },
+    {
+      "id": 3,
+      "file": "src/worker-service/process.py",
+      "line": 61,
+      "category": "unhandled-none",
+      "description": "calculate_priority calls .lower() on task.get('type') which could be None",
+      "current_code": "if task.get(\"type\").lower() == \"critical\":",
+      "correct_code": "if task.get(\"type\") == \"critical\":"
+    },
+    {
+      "id": 4,
+      "file": "src/api-service/main.py",
+      "line": 30,
+      "category": "resource-leak",
+      "description": "File descriptor opened in __init__ but never closed in stop() method",
+      "current_code": "self.log_file = open(\"/tmp/api.log\", \"w\")",
+      "correct_code": "Remove this line or use context manager; add self.log_file.close() in stop()"
+    },
+    {
+      "id": 5,
+      "file": "src/api-service/main.py",
+      "line": 68,
+      "category": "swallowed-exception",
+      "description": "Exception caught but silently ignored with 'pass', preventing error propagation",
+      "current_code": "except Exception as e:\n                pass",
+      "correct_code": "except Exception as e:\n                return format_error(500, f\"Server error: {str(e)}\")"
+    },
+    {
+      "id": 6,
+      "file": "src/worker-service/worker.py",
+      "line": 33,
+      "category": "mutable-default",
+      "description": "Mutable default argument {} shared across all function calls",
+      "current_code": "def process_task(self, task_id: str, data: Dict[str, Any] = {}) -> Dict[str, Any]:",
+      "correct_code": "def process_task(self, task_id: str, data: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:"
+    }
+  ],
+  "clean_files": [
+    "src/shared/__init__.py",
+    "src/shared/utils.py",
+    "config/config.py"
+  ]
+}

@@ -1,0 +1,9 @@
+labs/
+data/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.venv/
+
+.claude/settings.local.json
+bootcamp-build-instructions(1).md

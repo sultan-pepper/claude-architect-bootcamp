@@ -1,0 +1,69 @@
+{
+  "scripts": [
+    {
+      "id": "m9-straightforward-no-escalation",
+      "description": "Straightforward case with no escalation needed",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "Hi, I want to check the status of my order O001. It should have arrived by now.",
+          "expected_outcome": "Agent calls lookup_order('O001'), confirms delivery_date has passed, status is DELIVERED. No escalation needed. Clear resolution."
+        }
+      ]
+    },
+    {
+      "id": "m9-policy-gap-must-escalate",
+      "description": "Case requiring escalation due to policy gap (refund amount > $500 policy cap)",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "I need to return order O004 for a refund. There's a manufacturing defect.",
+          "expected_outcome": "Agent calls lookup_order('O004'), sees total=$768.99 (exceeds $500 policy cap). Agent must escalate_to_human with case_summary about defective item and amount."
+        }
+      ]
+    },
+    {
+      "id": "m9-explicit-human-request",
+      "description": "Customer explicitly requests human agent",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "I've been dealing with this issue for days. I need to talk to a real person right now.",
+          "expected_outcome": "Agent immediately calls escalate_to_human without attempting further resolution. Honor explicit human request."
+        }
+      ]
+    },
+    {
+      "id": "m9-ambiguous-identity-alex-rivera",
+      "description": "Ambiguous customer identity - two 'Alex Rivera' customers exist",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "Hi, I'm Alex Rivera and I need to check on my order status.",
+          "expected_outcome": "Agent calls find_customers('Alex Rivera'), gets 2 results (C009, C010). Agent must ask clarifying question: email or other identifier to distinguish between C009 (alex.r.1@example.com, gold tier, $4550.99 spend) and C010 (alex.r.2@example.com, bronze tier, $650.25 spend)."
+        },
+        {
+          "turn": 2,
+          "user_message": "I'm the one with the gold tier account.",
+          "expected_outcome": "Agent identifies C009 and can proceed with that customer context."
+        }
+      ]
+    },
+    {
+      "id": "m9-subagent-timeout-simulation",
+      "description": "Simulated subagent timeout or failure recovery",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "I need help with orders from three different years - 2022, 2023, and 2024 orders. Can you pull them all up?",
+          "expected_outcome": "Agent attempts lookup_order for sample order IDs. For any non-existent orders (e.g., O999), receives KeyError. Agent handles gracefully and asks for valid order IDs. Tests error handling and recovery without escalating unnecessarily."
+        },
+        {
+          "turn": 2,
+          "user_message": "Sorry, let me give you O001, O007, and O009.",
+          "expected_outcome": "Agent successfully calls lookup_order for all three existing orders and provides information."
+        }
+      ]
+    }
+  ]
+}

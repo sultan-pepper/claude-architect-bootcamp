@@ -1,0 +1,60 @@
+# GitLab CI template — adapt for your own pipeline.
+# This file is NOT checked by bootcamp check. It is a starting point.
+#
+# Prerequisites:
+# - ANTHROPIC_API_KEY set as a GitLab CI/CD secret variable (Settings → CI/CD → Variables)
+# - python:3.12-slim runner image available
+# - Claude CLI installed in the CI image (pip install anthropic; the CLI is 'claude')
+
+stages:
+  - review
+
+code-review:
+  stage: review
+  image: python:3.12-slim
+  # Run on merge requests and on pushes to main
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+  variables:
+    # Point at the repo being reviewed — typically $CI_PROJECT_DIR in GitLab
+    REPO_PATH: "$CI_PROJECT_DIR"
+    # Path for this module's workspace (adjust to your repo layout)
+    REVIEW_WORKSPACE: "$CI_PROJECT_DIR/labs/06-cicd/workspace"
+
+  before_script:
+    - pip install --quiet anthropic
+
+  script:
+    # First run: no prior findings
+    - |
+      python "$REVIEW_WORKSPACE/ci_review.py" \
+        --repo-path "$REPO_PATH" \
+        --output "$CI_PROJECT_DIR/findings.json"
+
+    # TODO: on subsequent runs, fetch prior findings from artifact storage or a cache key
+    # and pass --prior-findings to suppress already-reported issues.
+
+    # Print summary to CI log
+    - python -c "
+      import json, sys
+      findings = json.load(open('findings.json'))
+      print(f'Findings: {len(findings)}')
+      for f in findings:
+          print(f'  [{f[\"severity\"]}] {f[\"file\"]}:{f[\"line\"]} {f[\"category\"]} — {f[\"explanation\"]}')
+      "
+
+  artifacts:
+    name: "code-review-findings-$CI_COMMIT_SHORT_SHA"
+    paths:
+      - findings.json
+    expire_in: 30 days
+    # Expose findings.json in the MR widget (GitLab 15.1+)
+    reports:
+      # TODO: convert findings.json to JUnit XML for inline MR annotations
+      # junit: findings_junit.xml
+
+  # Do not fail the pipeline if findings are found — treat as informational.
+  # To block merges on findings, remove 'allow_failure: true'.
+  allow_failure: true

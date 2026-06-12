@@ -1,0 +1,34 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["file", "line", "category", "severity", "explanation", "fingerprint"],
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Relative path from repo root"
+      },
+      "line": {
+        "type": "integer",
+        "description": "Line number of the issue"
+      },
+      "category": {
+        "type": "string",
+        "description": "Issue category (off-by-one, wrong-comparison, unhandled-none, resource-leak, swallowed-exception, mutable-default)"
+      },
+      "severity": {
+        "type": "string",
+        "enum": ["critical", "high", "medium", "low"],
+        "description": "Issue severity"
+      },
+      "explanation": {
+        "type": "string",
+        "description": "One-sentence explanation of the issue"
+      },
+      "fingerprint": {
+        "type": "string",
+        "description": "Stable hash across runs for dedup (sha256 of 'file:line:category', first 16 hex chars)"
+      }
+    }
+  }
+}
