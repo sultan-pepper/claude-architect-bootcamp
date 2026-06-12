@@ -1,5 +1,13 @@
 # bootcamp
 
+> 🤖 **Vibe-coded by Claude.** This entire app — the runner, all nine labs,
+> the fixtures, the verification suites, and these docs — was built end-to-end
+> by [Claude](https://claude.com/claude-code) (Fable 5, running in Claude
+> Code) from a single design brief: Claude scaffolded the project, dispatched
+> its own builder/curriculum/checker subagents, reviewed its own output with
+> an independent agent, fixed the findings, and pushed this repo. A human
+> (hi, Kieran) supplied the brief and the GitHub login.
+
 A hands-on lab runner for the seven Claude Certified Architect – Foundations
 competency areas. Not exam prep: nine build-it-yourself labs with automated
 verification, escalating hints, and a Haiku mentor.
