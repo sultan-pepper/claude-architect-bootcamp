@@ -64,6 +64,62 @@ wiring real surfaces:
 - **Module 06**: adapt `starter/.gitlab-ci.yml` and run the review pipeline in
   your real GitLab CI; the local CI-simulating script is the checkable default.
 
+## Your first lab (concrete walkthrough)
+
+```bash
+# 1. Install and point at your API key
+python3 -m venv .venv
+.venv/bin/pip install -e ".[dev]"
+export ANTHROPIC_API_KEY=sk-ant-...
+export ANTHROPIC_MODEL=claude-haiku-4-5   # keep Haiku while you iterate
+
+# 2. Materialise module 01 into your workspace
+.venv/bin/bootcamp next
+# → creates  labs/01-agentic-loop/
+#               lesson.md      read this first — concept + API reference
+#               lab.md         the task spec + acceptance criteria
+#               workspace/
+#                 agent.py     starter skeleton — THIS is the file you edit
+#                 README.md    quick contract reminder
+
+# 3. Read the brief, then open your editor
+#    labs/01-agentic-loop/workspace/agent.py has TODO comments guiding every step.
+#    Fill them in. The runner never touches this file — it's yours.
+
+# 4. Run the checker
+.venv/bin/bootcamp check
+# Each failing criterion prints: [FAIL] <criterion-name>  (<lesson section>)
+# Each passing criterion prints: [PASS] <criterion-name>
+
+# 5. If you're stuck — escalate through hints
+.venv/bin/bootcamp hint        # L1: a nudge (requires at least one failed check run)
+.venv/bin/bootcamp hint        # L2: the mechanism explained
+.venv/bin/bootcamp hint        # L3: pseudocode
+
+# 6. Ask the mentor a question
+.venv/bin/bootcamp mentor "why does my loop exit before the tool result is appended?"
+# Haiku chat with the lesson + your last check run in context.
+# It will ask you questions and point you at docs — it won't write your code.
+
+# 7. Once all checks pass
+.venv/bin/bootcamp status      # shows module 01 as passed, unlocks module 02
+.venv/bin/bootcamp next        # materialises the next module
+```
+
+**What the workspace looks like** after `bootcamp next` for module 01:
+
+```
+labs/
+└── 01-agentic-loop/
+    ├── lesson.md          ← read this first
+    ├── lab.md             ← task spec, acceptance criteria, fixture docs
+    └── workspace/
+        ├── agent.py       ← edit this (and only this for M01)
+        └── README.md      ← quick contract ref
+```
+
+The `curriculum/` directory is read-only source — the runner copies starter files into `labs/` when you run `bootcamp next`. Your workspace is never touched by the runner again.
+
 ## How checks work
 
 Each module ships a `checks/` suite the runner discovers and executes
